@@ -5,14 +5,31 @@ use Phong\State;
 
 class Ball implements Updatable, Drawable
 {
+    /**
+     * @var int
+     */
     private $posX;
 
+    /**
+     * @var int
+     */
     private $posY;
 
+    /**
+     * @var int
+     */
     private $velX;
 
+    /**
+     * @var int
+     */
     private $velY;
 
+    /**
+     * Ball constructor.
+     * @param int $x
+     * @param int $y
+     */
     public function __construct($x, $y)
     {
         // Our position is actually sub-cursor. This makes moving the ball
@@ -24,6 +41,9 @@ class Ball implements Updatable, Drawable
         $this->velY = rand(-20, 20);
     }
 
+    /**
+     * @param State $state
+     */
     public function update(State $state)
     {
         if ($this->getPosX() >= $state->getGameWidth() - 5 || $this->getPosX() <= 4) {
@@ -39,6 +59,9 @@ class Ball implements Updatable, Drawable
         $this->posY += $this->velY;
     }
 
+    /**
+     * @return array
+     */
     public function getCoordinates()
     {
         return [
@@ -51,16 +74,25 @@ class Ball implements Updatable, Drawable
         ];
     }
 
+    /**
+     * @return string
+     */
     public function getDrawingCharacter()
     {
         return html_entity_decode('&#x263A;', ENT_NOQUOTES, 'UTF-8');
     }
 
+    /**
+     * @return float
+     */
     private function getPosX()
     {
         return round($this->posX / 16);
     }
 
+    /**
+     * @return float
+     */
     private function getPosY()
     {
         return round($this->posY / 16);

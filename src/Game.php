@@ -3,16 +3,33 @@ namespace Phong;
 
 class Game
 {
+    /**
+     * @var Screen
+     */
     private $output;
+
+    /**
+     * @var float
+     */
     private $refreshRate;
+
+    /**
+     * @var State
+     */
     private $state;
 
+    /**
+     * Game constructor.
+     */
     public function __construct()
     {
         $this->state = new State();
         $this->state->set(State::STOPPED);
     }
 
+    /**
+     * @param Screen $output
+     */
     public function setOutput(Screen $output)
     {
         $this->output = $output;
@@ -22,12 +39,18 @@ class Game
         );
     }
 
+    /**
+     * @param $rate
+     */
     public function setRefreshRate($rate)
     {
         // We want the refresh rate to be in microseconds thanks to usleep
         $this->refreshRate = 1000000 / $rate;
     }
 
+    /**
+     *
+     */
     public function start()
     {
         $this->state->addEntity(
@@ -43,21 +66,33 @@ class Game
         $this->state->set(State::RUNNING);
     }
 
+    /**
+     *
+     */
     public function pause()
     {
         $this->state->set(State::PAUSED);
     }
 
+    /**
+     *
+     */
     public function stop()
     {
         $this->state->set(State::STOPPED);
     }
 
+    /**
+     * @return bool
+     */
     public function isRunning()
     {
         return $this->state->is(State::RUNNING);
     }
 
+    /**
+     *
+     */
     public function poll()
     {
         $start = microtime(true) * 1000 * 1000;
