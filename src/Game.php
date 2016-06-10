@@ -37,7 +37,7 @@ class Game
     }
 
     /**
-     * @param $rate
+     * @param int $rate
      */
     public function setRefreshRate($rate)
     {
