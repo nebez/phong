@@ -37,7 +37,6 @@ class CliScreen implements Screen
     {
         $coordinates = $entity->getCoordinates();
 
-
         foreach (range($coordinates['y'], $coordinates['y'] + $coordinates['h'] - 1) as $y) {
             fwrite(STDOUT, shell_exec('tput cup ' . $y . ' ' . $coordinates['x']));
 
@@ -54,7 +53,7 @@ class CliScreen implements Screen
     /**
      * @return string
      */
-    public function getHeight()
+    public function getHeight(): string
     {
         return shell_exec('tput lines');
     }
@@ -62,7 +61,7 @@ class CliScreen implements Screen
     /**
      * @return string
      */
-    public function getWidth()
+    public function getWidth(): string
     {
         return shell_exec('tput cols');
     }
@@ -70,7 +69,7 @@ class CliScreen implements Screen
     /**
      * @return string
      */
-    private function getFps()
+    private function getFps(): string
     {
         $now = microtime(true);
         $duration = $now - $this->lastDraw;

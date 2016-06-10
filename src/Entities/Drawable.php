@@ -6,10 +6,10 @@ interface Drawable
     /**
      * @return array
      */
-    public function getCoordinates();
+    public function getCoordinates(): array;
 
     /**
      * @return string
      */
-    public function getDrawingCharacter();
+    public function getDrawingCharacter(): string;
 }

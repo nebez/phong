@@ -19,10 +19,10 @@ interface Screen
     /**
      * @return string
      */
-    public function getHeight();
+    public function getHeight(): string;
 
     /**
      * @return string
      */
-    public function getWidth();
+    public function getWidth(): string;
 }

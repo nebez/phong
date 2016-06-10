@@ -60,7 +60,7 @@ class State
      * @param int $state
      * @return bool
      */
-    public function is($state)
+    public function is($state): bool
     {
         return $this->state === $state;
     }

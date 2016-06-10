@@ -52,7 +52,7 @@ class Paddle implements Updatable, Drawable
     /**
      * @return array
      */
-    public function getCoordinates()
+    public function getCoordinates(): array
     {
         return [
             'x' => $this->posX,
@@ -65,7 +65,7 @@ class Paddle implements Updatable, Drawable
     /**
      * @return string
      */
-    public function getDrawingCharacter()
+    public function getDrawingCharacter(): string
     {
         return html_entity_decode('&#x2588;', ENT_NOQUOTES, 'UTF-8');
     }

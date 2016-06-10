@@ -62,7 +62,7 @@ class Ball implements Updatable, Drawable
     /**
      * @return array
      */
-    public function getCoordinates()
+    public function getCoordinates(): array
     {
         return [
             'x' => $this->getPosX(),
@@ -77,7 +77,7 @@ class Ball implements Updatable, Drawable
     /**
      * @return string
      */
-    public function getDrawingCharacter()
+    public function getDrawingCharacter(): string
     {
         return html_entity_decode('&#x263A;', ENT_NOQUOTES, 'UTF-8');
     }
@@ -85,7 +85,7 @@ class Ball implements Updatable, Drawable
     /**
      * @return float
      */
-    private function getPosX()
+    private function getPosX(): float
     {
         return round($this->posX / 16);
     }
@@ -93,7 +93,7 @@ class Ball implements Updatable, Drawable
     /**
      * @return float
      */
-    private function getPosY()
+    private function getPosY(): float
     {
         return round($this->posY / 16);
     }

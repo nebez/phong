@@ -85,7 +85,7 @@ class Game
     /**
      * @return bool
      */
-    public function isRunning()
+    public function isRunning(): bool
     {
         return $this->state->is(State::RUNNING);
     }
