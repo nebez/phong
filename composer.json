@@ -1,0 +1,15 @@
+{
+    "name": "nebez/ponghp",
+    "authors": [
+        {
+            "name": "Nebez Briefkani",
+            "email": "me@nebezb.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Phong\\": "src/"
+        }
+    }
+}

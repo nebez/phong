@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+<?php
+
+require_once 'vendor/autoload.php';
+
+$game = new Phong\Game();
+
+$screen = new Phong\CliScreen();
+
+$game->setOutput($screen);
+$game->setRefreshRate(10);
+
+$game->start();
+
+while ($game->isRunning()) {
+    $game->poll();
+}
