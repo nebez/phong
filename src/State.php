@@ -38,10 +38,7 @@ class State
      * @var int
      */
     private $gameHeight;
-
-    /**
-     *
-     */
+    
     public function __construct()
     {
         $this->state = self::STOPPED;

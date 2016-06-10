@@ -25,8 +25,7 @@ class Ball implements Updatable, Drawable
      */
     private $velY;
 
-    /**
-     * Ball constructor.
+    /**     
      * @param int $x
      * @param int $y
      */

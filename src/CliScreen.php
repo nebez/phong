@@ -10,17 +10,14 @@ class CliScreen implements Screen
      */
     private $lastDraw;
 
-    /**
-     *
-     */
     public function __construct()
     {
         $this->lastDraw = microtime(true);
     }
 
     /**
-     *
-     */
+     * @return void
+     */     
     public function clear()
     {
         fwrite(STDOUT, shell_exec('tput reset'));

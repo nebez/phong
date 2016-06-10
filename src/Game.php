@@ -18,9 +18,6 @@ class Game
      */
     private $state;
 
-    /**
-     * Game constructor.
-     */
     public function __construct()
     {
         $this->state = new State();
@@ -49,7 +46,7 @@ class Game
     }
 
     /**
-     *
+     * @return void
      */
     public function start()
     {
@@ -67,7 +64,7 @@ class Game
     }
 
     /**
-     *
+     * @return void
      */
     public function pause()
     {
@@ -75,7 +72,7 @@ class Game
     }
 
     /**
-     *
+     * @return void
      */
     public function stop()
     {
@@ -91,7 +88,7 @@ class Game
     }
 
     /**
-     *
+     * @return void
      */
     public function poll()
     {

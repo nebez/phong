@@ -15,8 +15,7 @@ class Paddle implements Updatable, Drawable
      */
     private $posY;
 
-    /**
-     * Paddle constructor.
+    /**     
      * @param int $x
      * @param int $y
      */
