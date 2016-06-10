@@ -5,16 +5,29 @@ use Phong\State;
 
 class Paddle implements Updatable, Drawable
 {
+    /**
+     * @var int
+     */
     private $posX;
 
+    /**
+     * @var int
+     */
     private $posY;
 
+    /**     
+     * @param int $x
+     * @param int $y
+     */
     public function __construct($x, $y)
     {
         $this->posX = $x;
         $this->posY = $y;
     }
 
+    /**
+     * @param State $state
+     */
     public function update(State $state)
     {
         // Slowly follow the ball around only if it's heading in our direction
@@ -35,7 +48,10 @@ class Paddle implements Updatable, Drawable
         }
     }
 
-    public function getCoordinates()
+    /**
+     * @return array
+     */
+    public function getCoordinates(): array
     {
         return [
             'x' => $this->posX,
@@ -45,7 +61,10 @@ class Paddle implements Updatable, Drawable
         ];
     }
 
-    public function getDrawingCharacter()
+    /**
+     * @return string
+     */
+    public function getDrawingCharacter(): string
     {
         return html_entity_decode('&#x2588;', ENT_NOQUOTES, 'UTF-8');
     }

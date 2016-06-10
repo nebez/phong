@@ -3,7 +3,13 @@ namespace Phong\Entities;
 
 interface Drawable
 {
-    public function getCoordinates();
+    /**
+     * @return array
+     */
+    public function getCoordinates(): array;
 
-    public function getDrawingCharacter();
+    /**
+     * @return string
+     */
+    public function getDrawingCharacter(): string;
 }

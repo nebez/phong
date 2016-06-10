@@ -5,6 +5,9 @@ use Phong\Entities\Drawable;
 
 class CliScreen implements Screen
 {
+    /**
+     * @var float
+     */
     private $lastDraw;
 
     public function __construct()
@@ -12,6 +15,9 @@ class CliScreen implements Screen
         $this->lastDraw = microtime(true);
     }
 
+    /**
+     * @return void
+     */
     public function clear()
     {
         fwrite(STDOUT, shell_exec('tput reset'));
@@ -21,10 +27,12 @@ class CliScreen implements Screen
         fwrite(STDOUT, 'FPS: ' . $this->getFps());
     }
 
+    /**
+     * @param Drawable $entity
+     */
     public function draw(Drawable $entity)
     {
         $coordinates = $entity->getCoordinates();
-
 
         foreach (range($coordinates['y'], $coordinates['y'] + $coordinates['h'] - 1) as $y) {
             fwrite(STDOUT, shell_exec('tput cup ' . $y . ' ' . $coordinates['x']));
@@ -39,17 +47,26 @@ class CliScreen implements Screen
         fwrite(STDOUT, shell_exec('tput cup 0 0'));
     }
 
-    public function getHeight()
+    /**
+     * @return string
+     */
+    public function getHeight(): string
     {
         return shell_exec('tput lines');
     }
 
-    public function getWidth()
+    /**
+     * @return string
+     */
+    public function getWidth(): string
     {
         return shell_exec('tput cols');
     }
 
-    private function getFps()
+    /**
+     * @return string
+     */
+    private function getFps(): string
     {
         $now = microtime(true);
         $duration = $now - $this->lastDraw;
