@@ -17,7 +17,7 @@ class CliScreen implements Screen
 
     /**
      * @return void
-     */     
+     */
     public function clear()
     {
         fwrite(STDOUT, shell_exec('tput reset'));

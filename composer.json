@@ -6,6 +6,7 @@
             "email": "me@nebezb.com"
         }
     ],
+    "php": ">=7.0.0",
     "require": {},
     "autoload": {
         "psr-4": {
