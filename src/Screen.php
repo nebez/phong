@@ -17,12 +17,12 @@ interface Screen
     public function draw(Drawable $entity);
 
     /**
-     * @return string
+     * @return int
      */
-    public function getHeight(): string;
+    public function getHeight(): int;
 
     /**
-     * @return string
+     * @return int
      */
-    public function getWidth(): string;
+    public function getWidth(): int;
 }

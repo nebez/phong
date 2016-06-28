@@ -7,7 +7,9 @@
         }
     ],
     "php": ">=7.0.0",
-    "require": {},
+    "require": {
+        "donatj/cli-toolkit": "0.*"
+    },
     "autoload": {
         "psr-4": {
             "Phong\\": "src/"
