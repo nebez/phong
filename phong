@@ -2,13 +2,14 @@
 <?php
 
 require_once 'autoload.php';
+require_once 'vendor/autoload.php';
 
 $game = new Phong\Game();
 
 $screen = new Phong\CliScreen();
 
 $game->setOutput($screen);
-$game->setRefreshRate(10);
+$game->setRefreshRate(24);
 
 $game->start();
 

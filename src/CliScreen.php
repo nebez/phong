@@ -2,6 +2,7 @@
 namespace Phong;
 
 use Phong\Entities\Drawable;
+use \CLI;
 
 class CliScreen implements Screen
 {
@@ -20,11 +21,8 @@ class CliScreen implements Screen
      */
     public function clear()
     {
-        fwrite(STDOUT, shell_exec('tput reset'));
-
-        // Calculate and print FPS
-        fwrite(STDOUT, shell_exec('tput cup 0 2'));
-        fwrite(STDOUT, 'FPS: ' . $this->getFps());
+        CLI\Erase::screen();
+        CLI\Output::string("FPS: {$this->getFps()}", 1, 4);
     }
 
     /**
@@ -32,35 +30,42 @@ class CliScreen implements Screen
      */
     public function draw(Drawable $entity)
     {
-        $coordinates = $entity->getCoordinates();
+        $c = $entity->getCoordinates();
 
-        foreach (range($coordinates['y'], $coordinates['y'] + $coordinates['h'] - 1) as $y) {
-            fwrite(STDOUT, shell_exec('tput cup ' . $y . ' ' . $coordinates['x']));
-
-            foreach (range($coordinates['x'], $coordinates['x'] + $coordinates['w'] - 1) as $x) {
-                fwrite(STDOUT, $entity->getDrawingCharacter());
-            }
+        // Translate coordinates to \CLI\Graphics format
+        if ($c['w'] == 1 && $c['h'] == 1) {
+            $x1 = $c['x'] + 1;
+            $y1 = $c['y'] + 1;
+            $x2 = $x1;
+            $y2 = $y1;
+        } else {
+            $x1 = $c['x'] + 1;
+            $y1 = $c['y'] + 1;
+            $x2 = $c['x'] + $c['w'] - 1;
+            $y2 = $c['y'] + $c['h'];
         }
+
+        CLI\Graphics::line($x1, $y1, $x2, $y2, [$entity->getDrawingCharacter()]);
 
         // Set the cursor to the top left of the window to prevent having
         // a weird cursor flicker follow the last drawn element
-        fwrite(STDOUT, shell_exec('tput cup 0 0'));
+        CLI\Cursor::hide();
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getHeight(): string
+    public function getHeight(): int
     {
-        return shell_exec('tput lines');
+        return CLI\Misc::rows();
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getWidth(): string
+    public function getWidth(): int
     {
-        return shell_exec('tput cols');
+        return CLI\Misc::cols();
     }
 
     /**
