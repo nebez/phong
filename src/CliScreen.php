@@ -36,16 +36,15 @@ class CliScreen implements Screen
         if ($c['w'] == 1 && $c['h'] == 1) {
             $x1 = $c['x'] + 1;
             $y1 = $c['y'] + 1;
-            $x2 = $x1;
-            $y2 = $y1;
+            CLI\Output::string($entity->getDrawingCharacter(), $y1, $x1);
         } else {
             $x1 = $c['x'] + 1;
             $y1 = $c['y'] + 1;
-            $x2 = $c['x'] + $c['w'] - 1;
+            $x2 = $c['x'] + $c['w'];
             $y2 = $c['y'] + $c['h'];
+            $dc = $entity->getDrawingCharacter();
+            CLI\Graphics::box($x1, $y1, $x2, $y2, [$dc, $dc, $dc, $dc]);
         }
-
-        CLI\Graphics::line($x1, $y1, $x2, $y2, [$entity->getDrawingCharacter()]);
 
         // Set the cursor to the top left of the window to prevent having
         // a weird cursor flicker follow the last drawn element
