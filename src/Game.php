@@ -18,14 +18,19 @@ class Game
      */
     private $state;
 
-    public function __construct()
+    /**
+     * Game constructor
+     * @param State $state
+     */
+    public function __construct(State $state)
     {
-        $this->state = new State();
+        $this->state = $state;
         $this->state->set(State::STOPPED);
     }
 
     /**
      * @param Screen $output
+     * @return void
      */
     public function setOutput(Screen $output)
     {
@@ -37,12 +42,29 @@ class Game
     }
 
     /**
-     * @param int $rate
+     * @return float
      */
-    public function setRefreshRate($rate)
+    public function getRefreshRate(): float
+    {
+        return $this->refreshRate;
+    }
+
+    /**
+     * @param int $rate
+     * @return void
+     */
+    public function setRefreshRate(int $rate)
     {
         // We want the refresh rate to be in microseconds thanks to usleep
         $this->refreshRate = 1000000 / $rate;
+    }
+
+    /**
+     * @return State
+     */
+    public function getState(): State
+    {
+        return $this->state;
     }
 
     /**
