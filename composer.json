@@ -10,9 +10,17 @@
     "require": {
         "donatj/cli-toolkit": "0.*"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^7.2"
+    },
     "autoload": {
         "psr-4": {
             "Phong\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Phong\\Tests\\": "tests/"
         }
     }
 }
